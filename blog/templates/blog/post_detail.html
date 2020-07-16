@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load markdown_extras %}
+{% block intro %}
+    <div class="card-content">
+        <!-- TODO: need to reformat the look of the content card so text/images display properly -->
+        <div class="card-desc">
+            <h2>{{ object.title }}</h2>
+            <img src="{{ object.post_image.url }}" heigh="300px" width="300px" align="right" style="margin-right:2em; padding-left:1em;" />
+            <p>{{ object.content | markdown | safe }}</p>
+            <div style="padding: 5px;">
+                <img src="{{ object.author.profile.image.url }}" height="25px" width="25px" class="left neg" />
+                <a class="left neg post-author" href="{% url 'user-posts' post.author.username %}">{{ object.author }}</a>
+                <small class="right">{{ object.date_posted|date:"F d, Y" }}</small>
+            </div>
+        </div>
+    </div>
+{% endblock intro %}
+{% block content %}
+    {% if object.author == user %}
+        <ul class="actions special">
+            <li><a class="button primary" href="{% url 'post-update' object.id %}">Edit</a></li>
+            <li><a class="button" href="{% url 'post-delete' object.id %}">Delete</a></li>
+        </ul>
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,83 @@
+@import url(fontawesome-all.min.css);
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400';
+
+/* FORM FORMATTING */
+#form {
+	float:left;
+	width:60%;
+	font-size: 0.25em;
+	text-align: left;
+}
+
+#form small {
+	font-size: 0.5em;
+}
+
+#form > .signIn p {
+	font-size: 3em;
+}
+
+.form-group {
+	font-size: 2em;
+}
+
+.left {
+	float: left;
+}
+
+	p.left {
+		padding: 0 0 0 0.25em;
+	}
+
+.right {
+	float: right;
+}
+
+	small.right {
+		font-size: 0.8em;
+	}
+
+/* POST FORMATTING */
+.neg {
+	margin-top: -5px;
+}
+
+p.neg {
+	margin-top: -3px;
+}
+
+a.post-title {
+	border: none;
+}
+
+	a:hover.post-title {
+		color: #1ABC9C;
+	}
+
+a.post-author {
+	border: none;
+	padding-left: 0.25em;
+	margin-top: -7px;
+}
+
+/* POST NAVIGATION */
+a.post-nav-prev-nxt {
+	color: #000000;
+	border-color: #2D98D1;
+}
+
+	a:hover.post-nav-prev-nxt {
+		background-color: #2D98D1;
+		border-color: #2D98D1;
+	}
+
+a.post-nav-first-last {
+	color: #ffffff;
+	background-color: #000000;
+}
+
+	a:hover.post-nav-first-last {
+		background-color: #2D98D1;
+		border-color: #2D98D1;
+	}
+

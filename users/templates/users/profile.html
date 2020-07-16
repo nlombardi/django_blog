@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block intro %}
+    <div class="content">
+        <img height="50px" width="50px" src="{{ user.profile.image.url }}" />
+        <h2 style="padding: 0 0.1em;">{{ user.username }}</h2>
+       <div id="form">
+           <!-- without the enctype it will look like the form is working but won't actually save the image
+           in the background -->
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock intro %}
+{% block content %}
+    <ul class="actions special">
+        <li><a href="generic.html" class="button primary">Get Started</a></li>
+        <li><a href="generic.html" class="button">Learn More</a></li>
+    </ul>
+{% endblock content %}

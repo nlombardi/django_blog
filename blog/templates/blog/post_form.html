@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block intro %}
+    <div class="content">
+        <h2>Blog Post</h2>
+        <div id="form">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                {{ form|crispy }} <!--  |crispy allows us to use a filter, crispy in this case -->
+                </fieldset>
+                <div class="form-group">
+                        <ul class="actions" style="font-size: 2em;">
+                            <li><button class="button primary" type="submit">Post</button></li>
+                        </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock intro %}
+{% block content %}
+<p>Markdown: * - Bold</p>
+<br/><br/><br/><br/><br/>
+<br/><br/>
+{% endblock content %}

@@ -1,0 +1,154 @@
+<!-- can write python code in the html files with { % -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+	<!-- Template CSS -->
+	<link rel="stylesheet" href="{% static 'blog/assets/css/main.css' %}" />
+	<link rel="stylesheet" href="{% static 'blog/assets/css/added.css' %}" />
+	<noscript><link rel="stylesheet" href="{% static 'blog/assets/css/noscript.css' %}" /></noscript>
+
+    {% if title %}
+        <title>Django Blog - {{ title }}</title>
+    {% else %}
+        <title>Django Blog</title>
+    {% endif %}
+</head>
+<body>
+	<!-- Top Nav -->
+		<div id="topNav">
+			<ul>
+				<li><a href="{% url 'blog-home' %}">Home</a></li>
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'profile' %}">Profile</a></li>
+					<li class="log-out"><a href="{% url 'logout' %}">Logout</a></li>
+				{% else %}
+					<li><a href="{% url 'login' %}">Login</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Header -->
+				<header id="header" class="alt">
+					<span class="logo"><img height="100px" width="100px" src="{% static 'blog/images/logo.png' %}" alt="" /></span>
+					<h1>Nick Lombardi</h1>
+					<p>Data Driven, Rational Researching, Economist.<br />
+					built by <a href="https://twitter.com/nlombardi91">@Nick33261166</a></p>
+				</header>
+
+			<!-- Nav -->
+				{% if user.is_authenticated %}
+					<nav id="nav">
+						<ul>
+							<li><a href="{% url 'blog-home' %}" class="active">Blog</a></li>
+							{% if user.is_authenticated %}
+								<li><a href="{% url 'post-create' %}">Write</a></li>
+							{% endif %}
+							<li><a href="#">Git</a></li>
+							<li><a href="#">Directory</a></li>
+							<li><a href="#">Database</a></li>
+						</ul>
+					</nav>
+				{% else %}
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Introduction</a></li>
+							<li><a href="#second">Blog</a></li>
+							<li><a href="#second">Programming</a></li>
+							<li><a href="#cta">Essays</a></li>
+							<li><a href="{% url 'blog-about' %}">About</a></li>
+						</ul>
+					</nav>
+				{% endif %}
+			<!-- Main -->
+				<div id="main">
+						{% if messages %}
+							<div class="notify">
+								{% for message in messages %}
+									<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+								{% endfor %}
+							</div>
+						{% endif %}
+						<!-- Introduction -->
+						<section id="intro" class="main">
+							{% block intro %}{% endblock %}
+						</section>
+						<!-- Second Section -->
+						<section id="second" class="main special" style="border-top: none;">
+							<header class="major">
+								{% block content %}{% endblock %}
+							</header>
+							<footer class="major">
+								{% block footer %}{% endblock %}
+							</footer>
+						</section>
+
+					<!-- Get Started -->
+					<!--
+						<section id="cta" class="main special">
+							<header class="major">
+								<p>{% block registration %}{% endblock registration %} </p>
+							</header>
+							<footer class="major">
+								{% block register %}{% endblock register %}
+							</footer>
+						</section>
+					-->
+				</div>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<section>
+						<h2>Aliquam sed mauris</h2>
+						<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+						<ul class="actions">
+							<li><a href="generic.html" class="button">Learn More</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>Contact Me</h2>
+						<dl class="alt">
+							<dt>Address</dt>
+							<dd>P.O. BOXOakville, ON &bull; CAN</dd>
+							<dt>Phone</dt>
+							<dd>(000) 000-0000 x 0000</dd>
+							<dt>Email</dt>
+							<dd><a href="#">information@untitled.tld</a></dd>
+						</dl>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+							<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+						</ul>
+					</section>
+					<p class="copyright"><p>&copy; Designed and Coded by Nick Lombardi.</p>
+				</footer>
+
+		</div>
+
+	<!-- Scripts -->
+		<script src="{% static 'blog/assets/js/jquery.min.js' %}"></script>
+		<script src="{% static 'blog/assets/js/jquery.scrollex.min.js' %}"></script>
+		<script src="{% static 'blog/assets/js/jquery.scrolly.min.js' %}"></script>
+		<script src="{% static 'blog/assets/js/browser.min.js' %}"></script>
+		<script src="{% static 'blog/assets/js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'blog/assets/js/util.js' %}"></script>
+		<script src="{% static 'blog/assets/js/main.js' %}"></script>
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+</html>

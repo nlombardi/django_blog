@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% block intro %}
+    <div class="content">
+        <h2>Delete Post</h2>
+        <p>Are you sure you want to delete post: "<strong>{{ object.title }}</strong>"?</p>
+        <div class="card-content">
+            <!-- TODO: need to reformat the look of the content card so text/images display properly -->
+            <div class="card-desc">
+                <h3>{{ object.title }}</h3>
+                <p>{{ object.content }}</p>
+                <div style="padding: 5px;">
+                    <img src="{{ object.author.profile.image.url }}" height="25px" width="25px" class="left neg" />
+                    <p class="left neg">{{ object.author }}</p><small class="right">On: {{ object.date_posted|date:"F d, Y" }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock intro %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <ul class="actions special">
+            <li><button class="button primary">Yes Delete</button></li>
+            <li><a href="{% url 'post-detail' object.id %}" class="button">Cancel</a></li>
+        </ul>
+    </form>
+{% endblock content %}
