@@ -1,0 +1,74 @@
+{% extends 'blog/base.html' %}
+{% load markdown_extras %}
+{% block intro %}
+    <div style="float:left; width: 60%;">
+        <h3>Welcome to the personal website and blog of <strong>Nick Lombardi</strong>.</h3>
+        <h3>
+            I have <strong>designed</strong> and <strong>developed</strong> this website in order to
+            publish my thoughts, ideas, and ongoing research projects. Throughout this website you
+            will find in-depth <strong style="color:#5f4d93;">analysis</strong>, <strong style="color: #5f4d93">
+            statistics</strong> and <strong style="color: #5f4d93">applied economics</strong> on
+            various research topics from <strong style="color:#7ec3ee;">environmental issues</strong>
+            to <strong style="color: #7ec3ee">investment strategies</strong>.
+            <br/>
+            <br/>
+            The purpose of conducting these <strong>analyses</strong> is to continue developing the
+            theory and principles learned throughout my masters, while continuing to <strong>develop
+            </strong> my <strong style="color: #1ABC9C;">PYTHON</strong>,
+            <strong style="color: #1ABC9C">R</strong>, <strong style="color: #1ABC9C">MATLAB</strong>,
+            and <strong style="color: #1ABC9C">C++</strong> skills.
+            <br/>
+            <br/>
+            All visualization and reporting is conducted using <strong style="color: #1ABC9C;">
+            MatPlotLib</strong>,<strong style="color: #1ABC9C;">Tableau</strong>, and
+            <strong style="color: #1ABC9C;">R</strong>.
+        </h3>
+    </div>
+    <div class="card-content" style="width: 40%; float: right">
+        <ul>
+            <li>Python</li>
+            <li>Python</li>
+            <li>Python</li>
+        </ul>
+    </div>
+{% endblock intro %}
+{% block content %}
+    <div id="section-title">
+        <h1 class="blog">BLOG</h1>
+    </div>
+    {% for post in posts %}
+        <div class="card-content">
+            <!-- TODO: need to reformat the look of the content card so text/images display properly -->
+            <div class="card-desc">
+                <h2><a class="post-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+                <p>{{ post.content | markdown | safe }}</p>
+                <div style="padding: 5px;">
+                    <img src="{{ post.author.profile.image.url }}" height="25px" width="25px" class="left neg" />
+                    <a class="left neg post-author" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a><small class="right">{{ post.date_posted|date:"F d, Y" }}</small>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
+
+{% block footer %}
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class="btn btn-info mb-4 post-nav-first-last" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4 post-nav-prev-nxt" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class="btn btn-info mb-4 post-nav-first-last" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a class="btn btn-outline-info mb-4 post-nav-prev-nxt" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4 post-nav-prev-nxt" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-info mb-4 post-nav-first-last" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}

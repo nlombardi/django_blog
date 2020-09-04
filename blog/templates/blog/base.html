@@ -39,7 +39,7 @@
 
 			<!-- Header -->
 				<header id="header" class="alt">
-					<span class="logo"><img height="100px" width="100px" src="{% static 'blog/images/logo.png' %}" alt="" /></span>
+					<span class="logo"><img height="150px" width="150px" src="{% static 'blog/images/logo.png' %}" alt="" /></span>
 					<h1>Nick Lombardi</h1>
 					<p>Data Driven, Rational Researching, Economist.<br />
 					built by <a href="https://twitter.com/nlombardi91">@Nick33261166</a></p>
@@ -53,19 +53,19 @@
 							{% if user.is_authenticated %}
 								<li><a href="{% url 'post-create' %}">Write</a></li>
 							{% endif %}
-							<li><a href="#">Git</a></li>
-							<li><a href="#">Directory</a></li>
-							<li><a href="#">Database</a></li>
+							<li><a href="#">Travel</a></li>
+							<li><a href="#">Reviews</a></li>
+							<li><a href="#">Book Recommendations</a></li>
 						</ul>
 					</nav>
 				{% else %}
 					<nav id="nav">
 						<ul>
 							<li><a href="#intro" class="active">Introduction</a></li>
-							<li><a href="#second">Blog</a></li>
-							<li><a href="#second">Programming</a></li>
-							<li><a href="#cta">Essays</a></li>
-							<li><a href="{% url 'blog-about' %}">About</a></li>
+							<li><a href="#second">Skills</a></li>
+							<li><a href="#second">Accomplishments</a></li>
+							<li><a href="#cta">Projects</a></li>
+							<li><a href="{% url 'blog-about' %}">Research</a></li>
 						</ul>
 					</nav>
 				{% endif %}
@@ -83,7 +83,7 @@
 							{% block intro %}{% endblock %}
 						</section>
 						<!-- Second Section -->
-						<section id="second" class="main special" style="border-top: none;">
+						<section id="second" class="main">
 							<header class="major">
 								{% block content %}{% endblock %}
 							</header>

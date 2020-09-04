@@ -48,10 +48,12 @@ p.neg {
 
 a.post-title {
 	border: none;
+	color: #000000;
 }
 
 	a:hover.post-title {
 		color: #1ABC9C;
+		text-underline: #2E4159;
 	}
 
 a.post-author {
@@ -80,4 +82,5 @@ a.post-nav-first-last {
 		background-color: #2D98D1;
 		border-color: #2D98D1;
 	}
+
 
