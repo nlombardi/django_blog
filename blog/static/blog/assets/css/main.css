@@ -3006,7 +3006,7 @@ input, select, textarea {
 			-webkit-flex: 1;
 			-ms-flex: 1;
 			flex: 1;
-			padding: 1.5em;
+			padding: 0.5em;
 			color: #ffffff;
 			text-align: center;
 		}
@@ -3033,7 +3033,7 @@ input, select, textarea {
 
 			.statistics li strong, .statistics li b {
 				display: block;
-				font-size: 2em;
+				font-size: 1em;
 				line-height: 1.1;
 				color: inherit !important;
 				font-weight: 300;
@@ -4021,8 +4021,9 @@ input, select, textarea {
 /* Sections */
 #intro {
 	width: 100%;
-	height: 600px;
+	height: 650px;
 	margin: 2em 0 0 0;
+	padding: 100px;
 }
 #second {
 	width:100%;
@@ -4085,22 +4086,27 @@ input, select, textarea {
 
 #skills {
 	width: 100%;
-	height: 180px;
+	height: 275px;
 }
 
-#skills ul {
-	list-style: none;
-}
+	#skills ul {
+		list-style: none;
+		margin: 0 auto;
+	}
 
-#skills ul li {
-	display: inline-block;
-}
+	#skills ul li {
+		display: inline-block;
+	}
 
-#skills a.tt {
-	display: none;
-	font-size: 2em;
-}
+	#skills a.tt {
+		display: none;
+		font-size: 2em;
+	}
 
-#skills a:hover.tt {
-	display: inline;
-}
+	#skills_title {
+		margin-left: 33%;
+	}
+
+	#skills_list {
+		margin-left: 7%;
+	}

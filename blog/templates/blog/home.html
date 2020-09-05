@@ -33,19 +33,49 @@
     <!-- <div class="section_border"></div> -->
 {% endblock intro %}
 {% block content %}
-    <h1 class="cm-sectionTitle">Skills</h1>
     <div id="skills">
-        <ul>
-            <div class="bk-tool-icon-hover"><li><img src="{% static 'blog/images/skills_python.jpg' %}" /></li></div>
-            <li><img src="{% static 'blog/images/skills_vba.jpg' %}" /></li>
-            <li><img src="{% static 'blog/images/skills_sql.jpg' %}" /></li>
-            <li><img src="{% static 'blog/images/skills_linux.jpg' %}" /></li>
-            <li><img src="{% static 'blog/images/skills_powerbi.jpg' %}" /></li>
-            <li><img src="{% static 'blog/images/skills_excel.jpg' %}" /></li>
-        </ul>
+        <div id="skills_title">
+                <h1>Technical Skills</h1>
+        </div>
+        <div id="skills_list">
+            <ul>
+                <li><img src="{% static 'blog/images/skills_python.jpg' %}" /></li>
+                <li><img src="{% static 'blog/images/skills_vba.jpg' %}" /></li>
+                <li><img src="{% static 'blog/images/skills_sql.jpg' %}" /></li>
+                <li><img src="{% static 'blog/images/skills_linux.jpg' %}" /></li>
+                <li><img src="{% static 'blog/images/skills_powerbi.jpg' %}" /></li>
+                <li><img src="{% static 'blog/images/skills_excel.jpg' %}" /></li>
+            </ul>
+        </div>
     </div>
-
 {% endblock content %}
+{% block content2 %}
+    <div id="skills_title">
+        <h1>Accomplishments</h1>
+    </div>
+    <ul class="statistics">
+        <li class="style1">
+            <span class="icon solid fa-code-branch"></span>
+            <strong>5</strong>  Data Sources
+        </li>
+        <li class="style2">
+            <span class="icon fa-folder-open"></span>
+            <strong>3</strong> Data Sets
+        </li>
+        <li class="style3">
+            <span class="icon solid fa-signal"></span>
+            <strong>2,048</strong> Tempus
+        </li>
+        <li class="style4">
+            <span class="icon solid fa-laptop"></span>
+            <strong>4,096</strong> Aliquam
+        </li>
+        <li class="style5">
+            <span class="icon fa-gem"></span>
+            <strong>1,024</strong> Nullam
+        </li>
+    </ul>
+{% endblock content2 %}
 {% block footer %}
 <div></div>
 {% endblock %}
